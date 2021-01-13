@@ -1,0 +1,538 @@
+Описания файлов
+train.csv - обучающий набор
+test.csv - набор тестов
+data_description.txt - полное описание каждого столбца, изначально подготовленное Дином Де Коком, но слегка отредактированное для соответствия именам столбцов, используемым здесь
+sample_submission.csv - эталонный образец линейной регрессии по году и месяцу продажи, площади участка и количеству спален
+
+
+Описание атрибутов данных: 
+
+MSSubClass - Определяет тип жилья, участвующего в продаже
+	Это дискретный набор данных, которые содержит 16 значений:
+		20 1-ЭТАЖНЫЙ 1946 И НОВЫЙ во всех стилях
+        30 1-ЭТАЖНЫЙ 1945 И СТАРЕЕ
+        40 ОДНОЭТАЖНЫХ С ОТДЕЛКОЙ Мансарда ВСЕ ВОЗРАСТЫ
+        45 1-1 / 2 исторический незаверщенный, любого возрастаа
+        50 1-1 / 2 исторический завершенный, любого возраста
+        60 2-ЭТАЖНЫЙ 1946 И НОВЫЙ
+        70 2-Х ЭТАЖНЫЙ 1945 И СТАРШЕ
+        75 2-1 / 2 исторический, любого возраста
+        80 РАЗДЕЛЕННЫХ ИЛИ МНОГОУРОВНЕВЫХ
+        85 СПЛИТ ФОЙЕ
+        90 ДУПЛЕКС - ВСЕ СТИЛИ И ВОЗРАСТЫ
+       120 1-ЭТАЖНЫЙ PUD (Планируемая разработка блока) - 1946 и новее
+       150 1-1 / 2 STORY PUD - ДЛЯ ВСЕХ ВОЗРАСТОВ
+       160 2-ЭТАЖНЫЙ ПАД - 1946 И НОВЫЕ
+       180 PUD - MULTILEVEL - INCL SPLIT LEV / FOYER
+       190 2 ПРЕОБРАЗОВАНИЕ СЕМЬИ - ВСЕ СТИЛИ И ВОЗРАСТЫ
+
+MSZoning - определяет общий общую территорию, где находится жилье
+	Это дискретный набор данных:
+	   A Сельское хозяйство
+       C Коммерческий
+       FV Floating Village Жилой
+       Я промышленный
+       RH Жилой высокой плотности
+       RL Жилой с низкой плотностью
+       RP Жилой парк низкой плотности
+       RM Жилой средней плотности
+
+LotFrontage - длина фасадной части дома (ед. из.)
+	Данный атрибут следует рассмотреть как непрерывный, поскольку из 1232 записей всего уникальных 116. Хотя возможен и как дескретный набор, необходимо глянуть на распределение.
+
+LotArea - общая площадь участка в квадратных футах
+	Это непрерывная величина. Данные следует разбить на интервалы
+
+
+Street - Тип подъездной дороги к собственности
+	Это дискретный набор данных
+	Grvl	гравий	
+    Pave	асфальт
+
+Alley: Тип подъездной аллеи к собственности
+	Это дискретный набор данных
+       Grvl	гравий
+       Pave	асфальт
+       NA 	нет аллеи
+
+LotShape: общий вид здания (форма)
+	Это дискретный набор данных
+       Reg	обычный
+       IR1	слегка неровный
+       IR2	умеренно неровный
+       IR3	неровный
+
+LandContour - Поверхность участка (земли)
+	Это дискретный набор данных
+	   Lvl	на уровне с квартирой
+       Bnk	есть подъем от уровня участка к зданию
+       HLS	холмистый участок, имеет уклон в одну из сторон
+       Low	впадина
+
+Utilities - дополнительные коммунальные элементы
+	Это дискретный набор данных
+	   AllPub	все коммунальное хозяйство (электричество, газ, водf)
+       NoSewr	электричество, газ и вода
+       NoSeWa	электричестов и газ
+       ELO	только электричество
+
+LotConfig - конфигурации участка
+	Это дискретный набор данных
+       Inside	внутренний участок, окруженный другими участками со всех сторон
+       Corner	угловой участок, находится на пересечении двух улиц
+       CulDSac	участок выходящий на закругленный поворот улицы
+       FR2	фасад на две стороны
+       FR3	фасад на три стороны
+
+LandSlope - уклон земли
+	Это дискретный набор данных
+       Gtl	пологий
+       Mod	незначительный уклон
+       Sev	крутой уклон
+
+Neighborhood - значимые объекты и достопримечательности по соседству с городо Ames
+	Это дискретный набор данных
+       Blmngtn	Bloomington Heights
+       Blueste	Bluestem
+       BrDale	Briardale
+       BrkSide	Brookside
+       ClearCr	Clear Creek
+       CollgCr	College Creek
+       Crawfor	Crawford
+       Edwards	Edwards
+       Gilbert	Gilbert
+       IDOTRR	Iowa DOT and Rail Road
+       MeadowV	Meadow Village
+       Mitchel	Mitchell
+       Names	North Ames
+       NoRidge	Northridge
+       NPkVill	Northpark Villa
+       NridgHt	Northridge Heights
+       NWAmes	Northwest Ames
+       OldTown	Old Town
+       SWISU	South & West of Iowa State University
+       Sawyer	Sawyer
+       SawyerW	Sawyer West
+       Somerst	Somerset
+       StoneBr	Stone Brook
+       Timber	Timberland
+       Veenker	Veenker
+
+
+Condition1: дополнительные преимущества рядом с участком
+	Это дискретный набор данных
+       Artery	главная дорога рядом
+       Feedr	поблизости заведения, где можно пообедать
+       Norm	Normal	
+       RRNn	в пределах 200 футов до железной дороги North-South Railroad
+       RRAn	рядом с железной дорогой North-South Railroad
+       PosN	рядом озелененные участки, парки 
+       PosA	прилегает к паркам и озелененным участкам
+       RRNe	в пределах 200 футов до железной дороги East-West Railroad
+       RRAe	рядом с железной дорогой East-West Railroad
+
+Condition2: дополнительные преимущества рядом с участком (если их больше одного)
+	Это дискретный набор данных
+       Artery	главная дорога рядом
+       Feedr	поблизости заведения, где можно пообедать
+       Norm	Normal	
+       RRNn	в пределах 200 футов до железной дороги North-South Railroad
+       RRAn	рядом с железной дорогой North-South Railroad
+       PosN	рядом озелененные участки, парки 
+       PosA	прилегает к паркам и озелененным участкам
+       RRNe	в пределах 200 футов до железной дороги East-West Railroad
+       RRAe	рядом с железной дорогой East-West Railroad
+
+BldgType: тип жилья
+	Это дискретный набор данных
+       1Fam	дом для одной семья (частный дом)
+       2FmCon	преобразованный дом для две семьи (изначально был построен как для одной семьи)
+       Duplx	Дуплекс ()yt более двух семей
+       TwnhsE	таунхаус с конечным блоком
+       TwnhsI	таунхаус с внутренним блоком
+
+HouseStyle стиль жилища
+	Это дискретный набор данных
+       1Story	одноэтажный
+       1.5Fin	полутороэтажный, второй этаж достроен
+       1.5Unf	полутороэтажный, второй этаж недостроен
+       2Story	двухэтажный
+       2.5Fin	2,5 этажный, второй этаж достроен
+       2.5Unf	2,5 этажный, второй этаж недостроен
+       SFoyer	Split Foyer
+       SLvl	Split Level
+
+OverallQual: общая оценка материала и отделки дома
+
+       10	превосходно
+       9	отлично
+       8	очень хорошо
+       7	хорошо
+       6	выше среднего
+       5	средний
+       4	ниже среднего
+       3	удовлетворительно
+       2	плохо
+       1	очень плохо
+	
+OverallCond: общая оценка состояния дома
+
+       10	превосходно
+       9	отлично
+       8	очень хорошо
+       7	хорошо
+       6	выше среднего
+       5	средний
+       4	ниже среднего
+       3	удовлетворительно
+       2	плохо
+       1	очень плохо
+		
+YearBuilt: Дата первоначального строительства
+
+
+YearRemodAdd: Дата реконструкции (такая же, как и дата постройки, если без реконструкции или дополнений)
+
+RoofStyle: тип крыши
+
+       Flat	плоская
+       Gable	двускатная
+       Gambrel	мансардная (без окон
+       Hip	вальмовая (четырехскатная)
+       Mansard	мансарда
+       Shed	Shed
+		
+RoofMatl: материал крыши
+
+       ClyTile	глина или плитка
+       CompShg	стандартная(композитная) черепица
+       Membran	мембранная
+       Metal	металлическая
+       Roll	рулонная кровля
+       Tar&Grv	гравий и гудрон
+       WdShake	дранка
+       WdShngl	деревянная черепица
+		
+Exterior1st: наружное покрытие дома
+
+       AsbShng	асбестовая черепица
+       AsphShn	асфальтовая черепица
+       BrkComm	кирпич общий
+       BrkFace	лицевой кирпич
+       CBlock	шлакоблок
+       CemntBd	цементная плита
+       HdBoard	жесткая доска
+       ImStucc	имитация штукатурки
+       MetalSd	маталлосайдинг
+       Other	другое
+       Plywood	фанера
+       PreCast	железобетон
+       Stone	камень
+       Stucco	липнина
+       VinylSd	виниловый сайдинг
+       Wd Sdng	деревянный сайдинг
+       WdShing	деревянная черепица
+	
+Exterior2nd: Наружное покрытие дома (если больше одного материала)
+
+       AsbShng	асбестовая черепица
+       AsphShn	асфальтовая черепица
+       BrkComm	кирпич общий
+       BrkFace	лицевой кирпич
+       CBlock	шлакоблок
+       CemntBd	цементная плита
+       HdBoard	жесткая доска
+       ImStucc	имитация штукатурки
+       MetalSd	маталлосайдинг
+       Other	другое
+       Plywood	фанера
+       PreCast	железобетон
+       Stone	камень
+       Stucco	липнина
+       VinylSd	виниловый сайдинг
+       Wd Sdng	деревянный сайдинг
+       WdShing	деревянная черепица
+	
+MasVnrType: тип облицовки кладки
+
+       BrkCmn	основной кирпич
+       BrkFace	лицевой кирпич
+       CBlock	шлакоблок
+       None	нет
+       Stone	камень
+	
+MasVnrArea: Площадь облицовки каменной кладкой в ​​квадратных футах
+	Это непрерывная (интервальная) величина
+
+ExterQual: Оценка качество материала экстерьера.
+		
+       Ex	отлично
+       Gd	хорошо
+       TA	средне
+       Fa	удовлетворительно
+       Po	плохо
+		
+ExterCond: Оценка текущего состояния материала снаружи.
+		
+       Ex	отлично
+       Gd	хорошо
+       TA	средне
+       Fa	удовлетворительно
+       Po	плохо
+		
+Foundation: тип фундамента
+		
+       BrkTil	кирпич и плитка
+       CBlock	шлакоблок
+       PConc	заливной бетон
+       Slab	Плита
+       Stone	камень
+       Wood	древесина
+		
+BsmtQual: Оценивает высоту подвала.
+
+       Ex	отлично (100+ дюймов)	
+       Gd	хорошо (90-99 дюймов)
+       TA	средне (80-89 дюймов)
+       Fa	удовлетворительно (70-79 дюймов)
+       Po	плохо (<70 дюймов
+       NA	нет подвала
+		
+BsmtCond: Оценивает общее состояние подвала.
+
+       Ex	отлично
+       Gd	хорошо
+       TA	средне - допускается небольшая влажность
+       Fa	удовлетворительно - сырость, растрескивание или оседание
+       Po	плохо - Сильное растрескивание, оседание или влажность
+       NA	нет подвала
+	
+BsmtExposure: Относится к стенам на уровне сада или выхода.
+
+       Gd	хорошая выдержка
+       Av	Средняя экспозиция (разделенные уровни или фойе обычно получают средний балл или выше)	
+       Mn	Минимальная экспозиция
+       No	без воздействия
+       NA	нет подвала
+	
+BsmtFinType1: Рейтинг готовой площади подвала
+
+       GLQ	хорошо
+       ALQ	среднее
+       BLQ	ниже среднего
+       Rec	средняя комната
+       LwQ	низкое качество
+       Unf	незавершен
+       NA	без подвала
+		
+BsmtFinSF1: Готовые квадратные футы типа 1
+
+BsmtFinType2: Оценка готовой площади подвала (если несколько типов)
+
+       GLQ	хорошо
+       ALQ	среднее
+       BLQ	ниже среднего
+       Rec	средняя комната
+       LwQ	низкое качество
+       Unf	незавершен
+       NA	без подвала
+
+BsmtFinSF2: Готовые квадратные футы типа 2
+
+BsmtUnfSF: Незаконченные площадь квадратные футы подвала
+
+TotalBsmtSF: Общая площадь подвала в квадратных футах
+
+Heating: Тип отопления
+		
+       Floor	напольная печь
+       GasA	Газовая печь с принудительным подогревом воздуха
+       GasW	 Газ горячая вода или паровое тепло
+       Grav	Гравитационная печь
+       OthW	 Горячая вода или пар, кроме газа
+       Wall	настенная печь
+		
+HeatingQC: Качество и состояние отопления
+
+       Ex	отлично
+       Gd	хорошо
+       TA	средне
+       Fa	удовлетворительно
+       Po	плохо
+		
+CentralAir: Центральное кондиционирование
+
+       N	нет
+       Y	есть
+		
+Electrical: система электропроводки
+
+       SBrkr	Стандартные автоматические выключатели
+       FuseA	Блок предохранителей FuseA более 60 А вся проводка Romex (в среднем)
+       FuseF	Блок предохранителей на 60 А и в основном проводка Romex
+       FuseP	Блок предохранителей на 60 А и проводка в основном ручки и трубки
+       Mix	смешанная
+		
+1stFlrSF: площадь первого этажа
+ 
+2ndFlrSF: площадь второго этажа
+
+LowQualFinSF: общая площадь некачественной отделки (всех этажей вместе)
+
+GrLivArea: Надземная жилая площадь квадратных футов
+
+BsmtFullBath: ванные комнаты полностью заполняет подвал
+
+BsmtHalfBath: подвал наполовину отдан под ванную комнату
+
+FullBath: Full bathrooms above grade
+
+HalfBath: Half baths above grade
+
+Bedroom: Bedrooms above grade (does NOT include basement bedrooms)
+
+Kitchen: Kitchens above grade
+
+KitchenQual: Kitchen quality
+
+       Ex	Excellent
+       Gd	Good
+       TA	Typical/Average
+       Fa	Fair
+       Po	Poor
+       	
+TotRmsAbvGrd: Total rooms above grade (does not include bathrooms)
+
+Functional: Home functionality (Assume typical unless deductions are warranted)
+
+       Typ	Typical Functionality
+       Min1	Minor Deductions 1
+       Min2	Minor Deductions 2
+       Mod	Moderate Deductions
+       Maj1	Major Deductions 1
+       Maj2	Major Deductions 2
+       Sev	Severely Damaged
+       Sal	Salvage only
+		
+Fireplaces: Number of fireplaces
+
+FireplaceQu: Fireplace quality
+
+       Ex	Excellent - Exceptional Masonry Fireplace
+       Gd	Good - Masonry Fireplace in main level
+       TA	Average - Prefabricated Fireplace in main living area or Masonry Fireplace in basement
+       Fa	Fair - Prefabricated Fireplace in basement
+       Po	Poor - Ben Franklin Stove
+       NA	No Fireplace
+		
+GarageType: Garage location
+		
+       2Types	More than one type of garage
+       Attchd	Attached to home
+       Basment	Basement Garage
+       BuiltIn	Built-In (Garage part of house - typically has room above garage)
+       CarPort	Car Port
+       Detchd	Detached from home
+       NA	No Garage
+		
+GarageYrBlt: Year garage was built
+		
+GarageFinish: Interior finish of the garage
+
+       Fin	Finished
+       RFn	Rough Finished	
+       Unf	Unfinished
+       NA	No Garage
+		
+GarageCars: Size of garage in car capacity
+
+GarageArea: Size of garage in square feet
+
+GarageQual: Garage quality
+
+       Ex	Excellent
+       Gd	Good
+       TA	Typical/Average
+       Fa	Fair
+       Po	Poor
+       NA	No Garage
+		
+GarageCond: Garage condition
+
+       Ex	Excellent
+       Gd	Good
+       TA	Typical/Average
+       Fa	Fair
+       Po	Poor
+       NA	No Garage
+		
+PavedDrive: Paved driveway
+
+       Y	Paved 
+       P	Partial Pavement
+       N	Dirt/Gravel
+		
+WoodDeckSF: Wood deck area in square feet
+
+OpenPorchSF: Open porch area in square feet
+
+EnclosedPorch: Enclosed porch area in square feet
+
+3SsnPorch: Three season porch area in square feet
+
+ScreenPorch: Screen porch area in square feet
+
+PoolArea: Pool area in square feet
+
+PoolQC: Pool quality
+		
+       Ex	Excellent
+       Gd	Good
+       TA	Average/Typical
+       Fa	Fair
+       NA	No Pool
+		
+Fence: Fence quality
+		
+       GdPrv	Good Privacy
+       MnPrv	Minimum Privacy
+       GdWo	Good Wood
+       MnWw	Minimum Wood/Wire
+       NA	No Fence
+	
+MiscFeature: Miscellaneous feature not covered in other categories
+		
+       Elev	Elevator
+       Gar2	2nd Garage (if not described in garage section)
+       Othr	Other
+       Shed	Shed (over 100 SF)
+       TenC	Tennis Court
+       NA	None
+		
+MiscVal: $Value of miscellaneous feature
+
+MoSold: Month Sold (MM)
+
+YrSold: Year Sold (YYYY)
+
+SaleType: Type of sale
+		
+       WD 	Warranty Deed - Conventional
+       CWD	Warranty Deed - Cash
+       VWD	Warranty Deed - VA Loan
+       New	Home just constructed and sold
+       COD	Court Officer Deed/Estate
+       Con	Contract 15% Down payment regular terms
+       ConLw	Contract Low Down payment and low interest
+       ConLI	Contract Low Interest
+       ConLD	Contract Low Down
+       Oth	Other
+		
+SaleCondition: Condition of sale
+
+       Normal	Normal Sale
+       Abnorml	Abnormal Sale -  trade, foreclosure, short sale
+       AdjLand	Adjoining Land Purchase
+       Alloca	Allocation - two linked properties with separate deeds, typically condo with a garage unit	
+       Family	Sale between family members
+       Partial	Home was not completed when last assessed (associated with New Homes)
